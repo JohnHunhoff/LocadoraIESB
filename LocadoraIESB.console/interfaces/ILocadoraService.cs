@@ -8,6 +8,8 @@ namespace LocadoraIESB.console.interfaces
         public List<Carro> ListarCarros();
         public Carro CadastraCarro(Carro car);
         public Cliente CadastraCliente(Cliente cliente);
-        public List<Cliente> ListaClientes();
+        public List<Cliente> ListarClientes();
+        public List<Carro> ListarCarrosNaoAlugados();
+        public void LocarCarro(Carro car, Cliente cliente);
     }
 }

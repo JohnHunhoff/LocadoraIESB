@@ -5,13 +5,14 @@ namespace LocadoraIESB.console.context
 {
     public class DbLocadoraContext : DbContext
     {
-        public DbLocadoraContext(DbContextOptions options) : base(options)
+        public DbSet<Carro> Carros { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        
+        public DbLocadoraContext(DbContextOptions options) : base(options) 
         {
             
         }
-        
         public DbLocadoraContext() { }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -20,8 +21,13 @@ namespace LocadoraIESB.console.context
             }
         }
 
-        public DbSet<Carro> Carros { get; set; }
-        public DbSet<Cliente> Clientes { get; set; }
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Cliente>()
+                .HasAlternateKey(c => c.Cpf);
+
+            modelBuilder.Entity<Carro>()
+                .HasAlternateKey(c => c.Placa);
+        }
     }
 }

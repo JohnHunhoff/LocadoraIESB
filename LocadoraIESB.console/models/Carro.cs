@@ -1,10 +1,12 @@
-﻿using LocadoraIESB.console.enums;
+﻿using System.ComponentModel.DataAnnotations;
+using LocadoraIESB.console.enums;
 
 namespace LocadoraIESB.console.models
 {
     public class Carro
     {
-        public long Id { get; set; }
+        [Key]
+        public int Id { get; set; }
         public Categoria Categoria { get; set; }
         public Transmissao Transmissao { get; set; }
         public Combustivel Combustivel { get; set; }
