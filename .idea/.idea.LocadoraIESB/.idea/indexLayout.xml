@@ -3,6 +3,8 @@
   <component name="UserContentModel">
     <attachedFolders />
     <explicitIncludes />
-    <explicitExcludes />
+    <explicitExcludes>
+      <Path>LocadoraIESB.console/Migrations</Path>
+    </explicitExcludes>
   </component>
 </project>

@@ -2,10 +2,10 @@
 {
     public enum Marca
     {
-        FORD,
-        CHEVROLET,
-        VOLKSWAGEN,
-        BMW,
-        FIAT
+        FORD = 1,
+        CHEVROLET = 2,
+        VOLKSWAGEN = 3,
+        BMW = 4,
+        FIAT = 5
     }
 }

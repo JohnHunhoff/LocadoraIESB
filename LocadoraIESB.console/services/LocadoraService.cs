@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LocadoraIESB.console.context;
+using LocadoraIESB.console.Exceptions;
 using LocadoraIESB.console.interfaces;
 using LocadoraIESB.console.models;
 
@@ -46,12 +48,35 @@ namespace LocadoraIESB.console.services
 
         public List<Carro> ListarCarrosNaoAlugados()
         {
-            throw new System.NotImplementedException();
+            var carrosDisponiveis = _context.Carros
+                .Where(c => c.Cliente == null)
+                .ToList();
+
+            return carrosDisponiveis;
         }
 
-        public void LocarCarro(Carro car, Cliente cliente)
+        public void LocarCarro(Carro car, Cliente cliente, DateTime dataInicio, DateTime dataFim)
         {
-            throw new System.NotImplementedException();
+            var carro = _context.Carros.Find(car.Id);
+            var locador = _context.Clientes.Find(cliente.Id);
+            if (carro.Cliente != null)
+            {
+                throw new CarroAlugadoException($"Carro de placa {carro.Placa} ja alugado pelo Cliente {carro.Cliente.Nome}");
+            }
+            var list = new List<Carro>(){car};
+            carro.Cliente = locador;
+            Locacao locacao = new Locacao();
+            locacao.Carros = list; 
+            locacao.Cliente = cliente;
+            locacao.DateTimeInicio = dataInicio;
+            locacao.DateTimeFim = dataFim;
+            _context.Locacoes.Add(locacao);
+            _context.SaveChanges();
+        }
+
+        public List<Locacao> RelatorioLocacaos()
+        {
+            return _context.Locacoes.ToList();
         }
         
         public List<Cliente> ListaClientes()

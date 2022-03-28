@@ -21,18 +21,21 @@ namespace LocadoraIESB.console.Migrations
 
             modelBuilder.Entity("LocadoraIESB.console.models.Carro", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Categoria")
                         .HasColumnType("int");
 
-                    b.Property<long?>("ClienteId")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("ClienteId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Combustivel")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LocacaoId")
                         .HasColumnType("int");
 
                     b.Property<int>("Marca")
@@ -42,7 +45,8 @@ namespace LocadoraIESB.console.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Placa")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Transmissao")
                         .HasColumnType("int");
@@ -52,20 +56,25 @@ namespace LocadoraIESB.console.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasAlternateKey("Placa");
+
                     b.HasIndex("ClienteId");
+
+                    b.HasIndex("LocacaoId");
 
                     b.ToTable("Carros");
                 });
 
             modelBuilder.Entity("LocadoraIESB.console.models.Cliente", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
@@ -75,13 +84,49 @@ namespace LocadoraIESB.console.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasAlternateKey("Cpf");
+
                     b.ToTable("Clientes");
+                });
+
+            modelBuilder.Entity("LocadoraIESB.console.models.Locacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateTimeFim")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateTimeInicio")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.ToTable("Locacoes");
                 });
 
             modelBuilder.Entity("LocadoraIESB.console.models.Carro", b =>
                 {
                     b.HasOne("LocadoraIESB.console.models.Cliente", "Cliente")
                         .WithMany("Carros")
+                        .HasForeignKey("ClienteId");
+
+                    b.HasOne("LocadoraIESB.console.models.Locacao", null)
+                        .WithMany("Carros")
+                        .HasForeignKey("LocacaoId");
+                });
+
+            modelBuilder.Entity("LocadoraIESB.console.models.Locacao", b =>
+                {
+                    b.HasOne("LocadoraIESB.console.models.Cliente", "Cliente")
+                        .WithMany()
                         .HasForeignKey("ClienteId");
                 });
 #pragma warning restore 612, 618

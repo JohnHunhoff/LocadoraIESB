@@ -2,10 +2,10 @@
 {
     public enum Categoria
     {
-        SEDAN,
-        SUV,
-        HATCH,
-        ESPORTIVO,
-        PICAPE
+        SEDAN = 1,
+        SUV = 2,
+        HATCH = 3,
+        ESPORTIVO = 4,
+        PICAPE = 5
     }
 }

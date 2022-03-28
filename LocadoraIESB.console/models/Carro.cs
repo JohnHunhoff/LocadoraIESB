@@ -27,8 +27,13 @@ namespace LocadoraIESB.console.models
             Placa = placa;
         }
 
-        public Carro(Cliente cliente)
+        public override string ToString()
         {
+            return $"Placa: {Placa}" +
+                   $"| Ano: {Year}" +
+                   $"| Modelo: {Modelo}" +
+                   $"| Combustivel: {Combustivel}" +
+                   $"| Transmissao: {Transmissao}";
         }
     }
 }

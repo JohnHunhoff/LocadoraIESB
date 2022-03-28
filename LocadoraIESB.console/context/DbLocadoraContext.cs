@@ -7,6 +7,8 @@ namespace LocadoraIESB.console.context
     {
         public DbSet<Carro> Carros { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
+
+        public DbSet<Locacao> Locacoes { get; set; }
         
         public DbLocadoraContext(DbContextOptions options) : base(options) 
         {
@@ -28,6 +30,7 @@ namespace LocadoraIESB.console.context
 
             modelBuilder.Entity<Carro>()
                 .HasAlternateKey(c => c.Placa);
+
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LocadoraIESB.console.context;
+using LocadoraIESB.console.Exceptions;
 using LocadoraIESB.console.interfaces;
 using LocadoraIESB.console.models;
 
@@ -44,23 +45,41 @@ namespace LocadoraIESB.console.services
 
         public List<Cliente> ListarClientes()
         {
-            throw new NotImplementedException();
+            return _context.Clientes.ToList();
         }
 
         public List<Carro> ListarCarrosNaoAlugados()
         {
-            throw new NotImplementedException();
+            var carrosDisponiveis = _context.Carros
+                .Where(c => c.Cliente == null)
+                .ToList();
+
+            return carrosDisponiveis;
         }
 
-        public void LocarCarro(Carro car, Cliente cliente)
+        public List<Locacao> RelatorioLocacaos()
         {
-            throw new NotImplementedException();
+            return _context.Locacoes.ToList();
         }
-
-        public List<Cliente> ListaClientes()
+        public void LocarCarro(Carro car, Cliente cliente, DateTime dataInicio, DateTime dataFim)
         {
-            return _context.Clientes.ToList();
+            
+            
+            var carro = _context.Carros.Find(car.Id);
+            var locador = _context.Clientes.Find(cliente.Id);
+            if (carro.Cliente != null)
+            {
+                throw new CarroAlugadoException($"Carro de placa {carro.Placa} ja alugado pelo Cliente {carro.Cliente.Nome}");
+            }
+            var list = new List<Carro>(){car};
+            carro.Cliente = locador;
+            Locacao locacao = new Locacao();
+            locacao.Carros = list; 
+            locacao.Cliente = cliente;
+            locacao.DateTimeInicio = dataInicio;
+            locacao.DateTimeFim = dataFim;
+            _context.Locacoes.Add(locacao);
+            _context.SaveChanges();
         }
-        
     }
 }

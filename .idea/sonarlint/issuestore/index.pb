@@ -1,27 +1,7 @@
 
-S
-#LocadoraIESB.console/enums/Marca.cs,a\3\a3323994a99deb94767388538c9d0825500e5662
-Y
-)LocadoraIESB.console/enums/Combustivel.cs,b\7\b79835a6e1633ff2924ab3b8e271178dd960acd1
-Y
-)LocadoraIESB.console/enums/Transmissao.cs,5\3\5363a728f2d19c1ad4f81520e536b1aebec42984
-O
-LocadoraIESB.tests/UnitTest1.cs,7\1\7115294ddfad4b6286e4df4c5f34a57cf3df13b3
 }
 MLocadoraIESB.tests/obj/Debug/netcoreapp3.1/LocadoraIESB.tests.AssemblyInfo.cs,5\c\5c82d8bba6826610556cca3654e18708077107be
 @
 LocadoraIESB.sln,f\9\f94b619988fa743cb83fbc81460305aaeca64b96
-`
-0LocadoraIESB.console/LocadoraIESB.console.csproj,8\7\871e7776f766a2ae7906e39bf6fc52651655def4
 Å
 QLocadoraIESB.console/obj/Debug/netcoreapp3.1/LocadoraIESB.console.AssemblyInfo.cs,a\e\ae608744f131e6ad05d1a6777929af7341b83dd6
-{
-KLocadoraIESB.console/Migrations/20220320185727_InitialMigration.Designer.cs,b\e\beefd0e13d6ee645488af2321b4dab9c16719cc6
-q
-ALocadoraIESB.console/Migrations/DbLocadoraContextModelSnapshot.cs,3\8\38185d03d0b674a69fd9259d799c72176bb05485
-r
-BLocadoraIESB.console/Migrations/20220320185727_InitialMigration.cs,b\d\bd1b701b89f817b29d0f0f28b20f6cad2fb09b83
-W
-'LocadoraIESB.console/enums/Categoria.cs,1\6\16b6087544ffaba6df005fa85ba8c6c4f8e01cf7
-O
-LocadoraIESB.console/Program.cs,3\0\302a65479bb5d30264c6f9418fa7c9d92ee8a570

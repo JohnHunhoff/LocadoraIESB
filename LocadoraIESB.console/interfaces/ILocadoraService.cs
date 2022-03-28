@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using LocadoraIESB.console.models;
 
 namespace LocadoraIESB.console.interfaces
@@ -10,6 +11,8 @@ namespace LocadoraIESB.console.interfaces
         public Cliente CadastraCliente(Cliente cliente);
         public List<Cliente> ListarClientes();
         public List<Carro> ListarCarrosNaoAlugados();
-        public void LocarCarro(Carro car, Cliente cliente);
+        public void LocarCarro(Carro car, Cliente cliente, DateTime dataInicio, DateTime dataFim);
+        public List<Locacao> RelatorioLocacaos();
+
     }
 }

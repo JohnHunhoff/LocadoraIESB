@@ -2,11 +2,11 @@
 {
     public enum Combustivel
     {
-        ELETRICO,
-        GASOLINA,
-        FLEX,
-        DIESEL,
-        ALCOOL,
-        HIBRIDO
+        ELETRICO = 1,
+        GASOLINA = 2,
+        FLEX = 3,
+        DIESEL = 4,
+        ALCOOL = 5,
+        HIBRIDO = 6
     }
 }

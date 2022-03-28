@@ -2,7 +2,7 @@
 {
     public enum Transmissao
     {
-        AUTOMATICO,
-        MANUAL
+        AUTOMATICO = 1,
+        MANUAL = 2
     }
 }
